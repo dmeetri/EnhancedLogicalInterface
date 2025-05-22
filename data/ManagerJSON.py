@@ -1,7 +1,6 @@
 import json
+from typing import List, Any
 import os
-
-from config import *
 
 class JsonManage:
     def __init__(self):
@@ -19,13 +18,13 @@ class JsonManage:
         with open(fileName, "w", encoding="utf-8") as f:
             json.dump(file, f, ensure_ascii=False, indent=4)
 
-    def updateFile(self, fileName, fileKey, fileValue):
+    def updateFile(self, fileName: str, fileKey: str, fileValue):
         data = self.getFile(fileName)
         data[fileKey] = fileValue
 
         with open("config.json", "w", encoding="utf-8") as f:
             self._createFile(fileName, data)
 
-    def getFile(self, fileName):
+    def getFile(self, fileName) -> List[any]:
         with open(fileName, "r", encoding="utf-8") as f:
             return json.load(f)
