@@ -2,9 +2,13 @@ import socket
 
 from view.Settings import *
 from view.WinError import *
+from data.ManagerJSON import JsonManage
 
 def onEnable():
     app = QApplication([])
+
+    jm = JsonManage()
+    jm.init()
 
     if not is_connected():
         netErr = NetworkError()

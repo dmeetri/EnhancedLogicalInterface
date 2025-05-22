@@ -40,7 +40,10 @@ class SettingWinMini(QMainWindow):
     def btnOpenSettings(self):
         if self.SettigsOppen is None:
             self.SettigsOppen = PrimarySettingWin()
-        self.SettigsOppen.show()
+            self.SettigsOppen.show()
+        else:
+            self.SettigsOppen.close()
+            self.SettigsOppen = None
     
 
 class PrimarySettingWin(QMainWindow):
