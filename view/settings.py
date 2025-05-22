@@ -8,6 +8,12 @@ class SettingWinMini(QMainWindow):
         self.setFixedSize(100, 100)
         self.setPosition("BottomRight")
 
+        self.SettigsOppen = None
+
+        settingsOpenButton = QPushButton("Настройки", self)
+        settingsOpenButton.resize(100, 100)
+        settingsOpenButton.clicked.connect(self.btnOpenSettings)
+
     def setPosition(self, pointPosition = "TopLeft"):
         screen_geometry = QApplication.primaryScreen().availableGeometry()
         screen_width = screen_geometry.width()
@@ -30,6 +36,11 @@ class SettingWinMini(QMainWindow):
             x, y = 0, 0
 
         self.move(x, y)
+    
+    def btnOpenSettings(self):
+        if self.SettigsOppen is None:
+            self.SettigsOppen = PrimarySettingWin()
+        self.SettigsOppen.show()
     
 
 class PrimarySettingWin(QMainWindow):
